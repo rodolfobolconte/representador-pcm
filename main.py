@@ -33,13 +33,13 @@ def desenha_grafico(x, y, sequencia, tipo_pcm):
 
 	menu(janela_principal)
 
+taxa_amostragem = 20
+
 def nrz_l(janela_principal, caixa_de_texto):
 
 	sequencia = caixa_de_texto.get()
 
 	sinal = [1]
-
-	taxa_amostragem = 20
 
 	for b in range(len(sequencia)):
 		
@@ -58,8 +58,6 @@ def nrz_m(janela_principal, caixa_de_texto):
 	sequencia = caixa_de_texto.get()
 
 	sinal = [-1]
-
-	taxa_amostragem = 20
 
 	for b in range(len(sequencia)):
 		if sequencia[b] == '1':
@@ -87,8 +85,6 @@ def nrz_s(janela_principal, caixa_de_texto):
 
 	sinal = [-1]
 
-	taxa_amostragem = 20
-
 	for b in range(len(sequencia)):
 		if sequencia[b] == '0':
 
@@ -115,8 +111,6 @@ def unipolar_rz(janela_principal, caixa_de_texto):
 
 	sinal = [1]
 
-	taxa_amostragem = 20
-
 	for b in range(len(sequencia)):
 		if sequencia[b] == '1':
 
@@ -141,8 +135,6 @@ def bipolar_rz(janela_principal, caixa_de_texto):
 	sequencia = caixa_de_texto.get()
 
 	sinal = [1]
-
-	taxa_amostragem = 20
 
 	for b in range(len(sequencia)):
 		if sequencia[b] == '1':
@@ -171,8 +163,6 @@ def rz_ami(janela_principal, caixa_de_texto):
 	sinal = [0]
 
 	alternador = 1
-
-	taxa_amostragem = 20
 
 	for b in range(len(sequencia)):
 		if sequencia[b] == '1':
@@ -203,8 +193,6 @@ def bi_phase_l(janela_principal, caixa_de_texto):
 	sequencia = caixa_de_texto.get()
 
 	sinal = [0]
-
-	taxa_amostragem = 20
 
 	for b in range(len(sequencia)):
 		if sequencia[b] == '1':
@@ -237,8 +225,6 @@ def delay_modulation(janela_principal, caixa_de_texto):
 	sinal = [1]
 
 	zeroDuplo = False
-
-	taxa_amostragem = 20
 
 	for b in range(len(sequencia)):
 		if sequencia[b] == '1':
@@ -286,6 +272,8 @@ def delay_modulation(janela_principal, caixa_de_texto):
 	x = np.linspace(0.0, len(sequencia), len(y))
 
 	desenha_grafico(x, y, sequencia, "delay modulation")
+
+
 
 def menu(janela_principal):
 	
