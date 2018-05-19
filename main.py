@@ -98,7 +98,6 @@ def menu(janela_principal):
 	label_digitar_sequencia.place(x=10, y=10)
 
 	caixa_de_texto = Entry(janela_principal, width=16, font=14, bg='#DDD')
-	caixa_de_texto.xview_scroll(16, "units")
 	caixa_de_texto.place(x=10, y=40)
 
 	label_digitar_sequencia = Label(janela_principal, text="Escolha o tipo do PCM:", font=14, bg='white')
