@@ -29,8 +29,7 @@ def desenha_grafico(x, y, sequencia, tipo_pcm):
 
 	canvas = FigureCanvasTkAgg(fig, master=janela_principal)
 	canvas.show()
-	canvas.get_tk_widget().pack(fill=BOTH, expand=2, padx=150, pady=30)
-	#canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+	canvas.get_tk_widget().pack(fill=BOTH, expand=1, padx=150, pady=30)
 
 	menu(janela_principal)
 
