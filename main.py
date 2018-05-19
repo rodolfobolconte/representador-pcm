@@ -81,6 +81,34 @@ def nrz_m(janela_principal, caixa_de_texto):
 
 	desenha_grafico(x, y, sequencia, "nrz-m")
 
+def nrz_s(janela_principal, caixa_de_texto):
+
+	sequencia = caixa_de_texto.get()
+
+	sinal = [-1]
+
+	taxa_amostragem = 20
+
+	for b in range(len(sequencia)):
+		if sequencia[b] == '0':
+
+			if sinal[-1] == 1: y = [-1.0] * taxa_amostragem * 2
+			else: y = [1.0] * taxa_amostragem * 2
+
+			sinal += list(y)
+
+		elif sequencia[b] == '1':
+
+			if sinal[-1] == 1: y = [1.0] * taxa_amostragem * 2
+			else: y = [-1.0] * taxa_amostragem * 2
+
+			sinal += list(y)
+
+	y = sinal
+	x = np.linspace(0.0, len(sequencia), len(y))
+
+	desenha_grafico(x, y, sequencia, "nrz-s")
+
 def delay_modulation(janela_principal, caixa_de_texto):
 
 	sequencia = caixa_de_texto.get()
@@ -156,13 +184,17 @@ def menu(janela_principal):
 	botao_nrz_m = Button(janela_principal, width=16, font=None, text="NRZ-M", command=nrz_m)
 	botao_nrz_m.place(x=10, y=130)
 
+	botao_nrz_s = Button(janela_principal, width=16, font=None, text="NRZ-S", command=nrz_s)
+	botao_nrz_s.place(x=10, y=160)
+
 	botao_delay_modulation = Button(janela_principal, width=16, font=None, text="Delay Modulation", command=delay_modulation)
-	botao_delay_modulation.place(x=10, y=160)
+	botao_delay_modulation.place(x=10, y=190)
 	
 
 	botao_delay_modulation["command"] = partial(delay_modulation, janela_principal, caixa_de_texto)
 	botao_nrz_l["command"] = partial(nrz_l, janela_principal, caixa_de_texto)
 	botao_nrz_m["command"] = partial(nrz_m, janela_principal, caixa_de_texto)
+	botao_nrz_s["command"] = partial(nrz_s, janela_principal, caixa_de_texto)
 
 	
 menu(janela_principal)
