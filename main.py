@@ -33,6 +33,34 @@ def desenha_grafico(x, y, sequencia, tipo_pcm):
 
 	menu(janela_principal)
 
+def nrz_l(janela_principal, caixa_de_texto):
+
+	sequencia = caixa_de_texto.get()
+
+	sinal = [1]
+
+	zeroDuplo = False
+
+	taxa_amostragem = 20
+
+	for b in range(len(sequencia)):
+		if sequencia[b] == '1':
+
+			y = [1.0] * taxa_amostragem * 2
+
+			sinal += list(y)
+
+		elif sequencia[b] == '0':
+
+			y = [-1.0] * taxa_amostragem * 2
+
+			sinal += list(y)
+
+	y = sinal
+	x = np.linspace(0.0, len(sequencia), len(y))
+
+	desenha_grafico(x, y, sequencia, "nrz-l")
+
 def delay_modulation(janela_principal, caixa_de_texto):
 
 	sequencia = caixa_de_texto.get()
@@ -90,7 +118,6 @@ def delay_modulation(janela_principal, caixa_de_texto):
 
 	desenha_grafico(x, y, sequencia, "delay modulation")
 
-
 def menu(janela_principal):
 	
 
@@ -103,10 +130,15 @@ def menu(janela_principal):
 	label_digitar_sequencia = Label(janela_principal, text="Escolha o tipo do PCM:", font=14, bg='white')
 	label_digitar_sequencia.place(x=10, y=70)
 
+	botao_nrz_l = Button(janela_principal, width=16, font=None, text="NRZ-L", command=nrz_l)
+	botao_nrz_l.place(x=10, y=100)
+
 	botao_delay_modulation = Button(janela_principal, width=16, font=None, text="Delay Modulation", command=delay_modulation)
-	botao_delay_modulation.place(x=10, y=100)
+	botao_delay_modulation.place(x=10, y=130)
+	
 
 	botao_delay_modulation["command"] = partial(delay_modulation, janela_principal, caixa_de_texto)
+	botao_nrz_l["command"] = partial(nrz_l, janela_principal, caixa_de_texto)
 
 	
 menu(janela_principal)
