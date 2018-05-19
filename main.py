@@ -198,6 +198,38 @@ def rz_ami(janela_principal, caixa_de_texto):
 
 	desenha_grafico(x, y, sequencia, "rz-ami")
 
+def bi_phase_l(janela_principal, caixa_de_texto):
+
+	sequencia = caixa_de_texto.get()
+
+	sinal = [0]
+
+	taxa_amostragem = 20
+
+	for b in range(len(sequencia)):
+		if sequencia[b] == '1':
+
+			y1 = [1] * taxa_amostragem
+			y2 = [-1] * taxa_amostragem
+
+			y = list(y1) + list(y2)
+
+			sinal += list(y)
+
+		elif sequencia[b] == '0':
+
+			y1 = [-1] * taxa_amostragem
+			y2 = [1] * taxa_amostragem
+
+			y = list(y1) + list(y2)
+
+			sinal += list(y)
+
+	y = sinal
+	x = np.linspace(0.0, len(sequencia), len(y))
+
+	desenha_grafico(x, y, sequencia, "bi-phase-l")
+
 def delay_modulation(janela_principal, caixa_de_texto):
 
 	sequencia = caixa_de_texto.get()
@@ -292,17 +324,22 @@ def menu(janela_principal):
 	botao_rz_ami.place(x=10, y=y)
 
 	y+=30
+	botao_bi_phase_l = Button(janela_principal, width=16, font=None, text="Bi-PHASE-L")
+	botao_bi_phase_l.place(x=10, y=y)
+
+	y+=30
 	botao_delay_modulation = Button(janela_principal, width=16, font=None, text="Delay Modulation")
 	botao_delay_modulation.place(x=10, y=y)
 	
 
-	botao_delay_modulation["command"] = partial(delay_modulation, janela_principal, caixa_de_texto)
 	botao_nrz_l["command"] = partial(nrz_l, janela_principal, caixa_de_texto)
 	botao_nrz_m["command"] = partial(nrz_m, janela_principal, caixa_de_texto)
 	botao_nrz_s["command"] = partial(nrz_s, janela_principal, caixa_de_texto)
 	botao_unipolar_rz["command"] = partial(unipolar_rz, janela_principal, caixa_de_texto)
 	botao_bipolar_rz["command"] = partial(bipolar_rz, janela_principal, caixa_de_texto)
 	botao_rz_ami["command"] = partial(rz_ami, janela_principal, caixa_de_texto)
+	botao_bi_phase_l["command"] = partial(bi_phase_l, janela_principal, caixa_de_texto)
+	botao_delay_modulation["command"] = partial(delay_modulation, janela_principal, caixa_de_texto)
 
 	
 menu(janela_principal)
