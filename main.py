@@ -134,7 +134,35 @@ def unipolar_rz(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "nrz-s")
+	desenha_grafico(x, y, sequencia, "unipolar rz")
+
+def bipolar_rz(janela_principal, caixa_de_texto):
+
+	sequencia = caixa_de_texto.get()
+
+	sinal = [1]
+
+	taxa_amostragem = 20
+
+	for b in range(len(sequencia)):
+		if sequencia[b] == '1':
+
+			y1 = [1.0] * taxa_amostragem ; y2 = [0] * taxa_amostragem
+			y = list(y1) + list(y2)
+
+			sinal += list(y)
+
+		elif sequencia[b] == '0':
+
+			y1 = [-1.0] * taxa_amostragem ; y2 = [0] * taxa_amostragem
+			y = list(y1) + list(y2)
+
+			sinal += list(y)
+
+	y = sinal
+	x = np.linspace(0.0, len(sequencia), len(y))
+
+	desenha_grafico(x, y, sequencia, "bipolar rz")
 
 def delay_modulation(janela_principal, caixa_de_texto):
 
@@ -222,6 +250,10 @@ def menu(janela_principal):
 	botao_unipolar_rz.place(x=10, y=y)
 
 	y+=30
+	botao_bipolar_rz = Button(janela_principal, width=16, font=None, text="Bipolar RZ", command=nrz_s)
+	botao_bipolar_rz.place(x=10, y=y)
+
+	y+=30
 	botao_delay_modulation = Button(janela_principal, width=16, font=None, text="Delay Modulation", command=delay_modulation)
 	botao_delay_modulation.place(x=10, y=y)
 	
@@ -231,6 +263,7 @@ def menu(janela_principal):
 	botao_nrz_m["command"] = partial(nrz_m, janela_principal, caixa_de_texto)
 	botao_nrz_s["command"] = partial(nrz_s, janela_principal, caixa_de_texto)
 	botao_unipolar_rz["command"] = partial(unipolar_rz, janela_principal, caixa_de_texto)
+	botao_bipolar_rz["command"] = partial(bipolar_rz, janela_principal, caixa_de_texto)
 
 	
 menu(janela_principal)
