@@ -12,14 +12,14 @@ janela_principal.configure(background='white')
 fig, eixo = plt.subplots(nrows=1, ncols=1, figsize=(80, 7))
 canvas = FigureCanvasTkAgg(fig, master=janela_principal)
 
-def desenha_grafico(x, y, sequencia, tipo_pcm):
+def desenha_grafico(x, y, sequencia, tipo_pcm, cor):
 	global fig, eixo, canvas
 
 	canvas.get_tk_widget().destroy()
 
 	fig, eixo = plt.subplots(nrows=1, ncols=1)
 
-	grafico = eixo.plot(x, y)
+	grafico = eixo.plot(x, y, color=cor)
 
 	eixo.set_xticks(np.arange(0.0, len(sequencia) + 0.5, 1))
 	eixo.set_yticks(np.arange(-1.5, 2., 0.5))
@@ -51,7 +51,7 @@ def nrz_l(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "nrz-l")
+	desenha_grafico(x, y, sequencia, "nrz-l", "red")
 
 def nrz_m(janela_principal, caixa_de_texto):
 
@@ -77,7 +77,7 @@ def nrz_m(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "nrz-m")
+	desenha_grafico(x, y, sequencia, "nrz-m", "red")
 
 def nrz_s(janela_principal, caixa_de_texto):
 
@@ -103,7 +103,7 @@ def nrz_s(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "nrz-s")
+	desenha_grafico(x, y, sequencia, "nrz-s", "red")
 
 def unipolar_rz(janela_principal, caixa_de_texto):
 
@@ -128,7 +128,7 @@ def unipolar_rz(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "unipolar rz")
+	desenha_grafico(x, y, sequencia, "unipolar rz", "green")
 
 def bipolar_rz(janela_principal, caixa_de_texto):
 
@@ -154,7 +154,7 @@ def bipolar_rz(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "bipolar rz")
+	desenha_grafico(x, y, sequencia, "bipolar rz", "green")
 
 def rz_ami(janela_principal, caixa_de_texto):
 
@@ -186,7 +186,7 @@ def rz_ami(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "rz-ami")
+	desenha_grafico(x, y, sequencia, "rz-ami", "green")
 
 def bi_phase_l(janela_principal, caixa_de_texto):
 
@@ -216,7 +216,7 @@ def bi_phase_l(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "bi-phase-l")
+	desenha_grafico(x, y, sequencia, "bi-phase-l", "blue")
 
 def bi_phase_m(janela_principal, caixa_de_texto):
 
@@ -249,7 +249,7 @@ def bi_phase_m(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "bi-phase-m")
+	desenha_grafico(x, y, sequencia, "bi-phase-m", "blue")
 
 def bi_phase_s(janela_principal, caixa_de_texto):
 
@@ -282,7 +282,7 @@ def bi_phase_s(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "bi-phase-s")
+	desenha_grafico(x, y, sequencia, "bi-phase-s", "blue")
 
 def delay_modulation(janela_principal, caixa_de_texto):
 
@@ -337,7 +337,7 @@ def delay_modulation(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "delay modulation")
+	desenha_grafico(x, y, sequencia, "delay modulation", "orange")
 
 def dicode_nrz(janela_principal, caixa_de_texto):
 
@@ -403,7 +403,7 @@ def dicode_nrz(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "dicode nrz")
+	desenha_grafico(x, y, sequencia, "dicode nrz", "purple")
 
 def dicode_rz(janela_principal, caixa_de_texto):
 
@@ -493,7 +493,7 @@ def dicode_rz(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "dicode rz")
+	desenha_grafico(x, y, sequencia, "dicode rz", "purple")
 
 def menu(janela_principal):
 	
@@ -508,51 +508,51 @@ def menu(janela_principal):
 	label_digitar_sequencia.place(x=10, y=70)
 
 	y = 100
-	botao_nrz_l = Button(janela_principal, width=16, font=None, text="NRZ-L")
+	botao_nrz_l = Button(janela_principal, width=16, font=None, text="NRZ-L", bg='#ff4444')
 	botao_nrz_l.place(x=10, y=y)
 
 	y+=30
-	botao_nrz_m = Button(janela_principal, width=16, font=None, text="NRZ-M")
+	botao_nrz_m = Button(janela_principal, width=16, font=None, text="NRZ-M", bg='#ff4444')
 	botao_nrz_m.place(x=10, y=y)
 
 	y+=30
-	botao_nrz_s = Button(janela_principal, width=16, font=None, text="NRZ-S")
+	botao_nrz_s = Button(janela_principal, width=16, font=None, text="NRZ-S", bg='#ff4444')
 	botao_nrz_s.place(x=10, y=y)
 
 	y+=30
-	botao_unipolar_rz = Button(janela_principal, width=16, font=None, text="Unipolar RZ")
+	botao_unipolar_rz = Button(janela_principal, width=16, font=None, text="Unipolar RZ", bg='#55ff77')
 	botao_unipolar_rz.place(x=10, y=y)
 
 	y+=30
-	botao_bipolar_rz = Button(janela_principal, width=16, font=None, text="Bipolar RZ")
+	botao_bipolar_rz = Button(janela_principal, width=16, font=None, text="Bipolar RZ", bg='#55ff77')
 	botao_bipolar_rz.place(x=10, y=y)
 
 	y+=30
-	botao_rz_ami = Button(janela_principal, width=16, font=None, text="RZ-AMI")
+	botao_rz_ami = Button(janela_principal, width=16, font=None, text="RZ-AMI", bg='#55ff77')
 	botao_rz_ami.place(x=10, y=y)
 
 	y+=30
-	botao_bi_phase_l = Button(janela_principal, width=16, font=None, text="Bi-PHASE-L")
+	botao_bi_phase_l = Button(janela_principal, width=16, font=None, text="Bi-PHASE-L", bg='#5577ff')
 	botao_bi_phase_l.place(x=10, y=y)
 
 	y+=30
-	botao_bi_phase_m = Button(janela_principal, width=16, font=None, text="Bi-PHASE-M")
+	botao_bi_phase_m = Button(janela_principal, width=16, font=None, text="Bi-PHASE-M", bg='#5577ff')
 	botao_bi_phase_m.place(x=10, y=y)
 
 	y+=30
-	botao_bi_phase_s = Button(janela_principal, width=16, font=None, text="Bi-PHASE-S")
+	botao_bi_phase_s = Button(janela_principal, width=16, font=None, text="Bi-PHASE-S", bg='#5577ff')
 	botao_bi_phase_s.place(x=10, y=y)
 
 	y+=30
-	botao_delay_modulation = Button(janela_principal, width=16, font=None, text="Delay Modulation")
+	botao_delay_modulation = Button(janela_principal, width=16, font=None, text="Delay Modulation", bg='#ff9955')
 	botao_delay_modulation.place(x=10, y=y)
 
 	y+=30
-	botao_delay_dicode_nrz = Button(janela_principal, width=16, font=None, text="Dicode NRZ")
+	botao_delay_dicode_nrz = Button(janela_principal, width=16, font=None, text="Dicode NRZ", bg='#ad7dad')
 	botao_delay_dicode_nrz.place(x=10, y=y)
 
 	y+=30
-	botao_delay_dicode_rz = Button(janela_principal, width=16, font=None, text="Dicode RZ")
+	botao_delay_dicode_rz = Button(janela_principal, width=16, font=None, text="Dicode RZ", bg='#ad7dad')
 	botao_delay_dicode_rz.place(x=10, y=y)
 	
 
