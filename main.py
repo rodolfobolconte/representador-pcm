@@ -339,6 +339,72 @@ def delay_modulation(janela_principal, caixa_de_texto):
 
 	desenha_grafico(x, y, sequencia, "delay modulation")
 
+def dicode_nrz(janela_principal, caixa_de_texto):
+
+	sequencia = caixa_de_texto.get()
+
+	sinal = [1]
+
+	for b in range(len(sequencia)):
+		if sequencia[b] == '1':
+
+			if sinal[-1] == 1:
+				y = [-1.0] * taxa_amostragem * 2
+
+			elif sinal[-1] == 0:
+
+				if b == 0:
+					y = [-1.0] * taxa_amostragem * 2
+
+				elif sequencia[b-1] == '1':
+
+					y = [0] * taxa_amostragem * 2
+
+				elif sequencia[b-1] == '0':
+
+					y = [-1] * taxa_amostragem * 2
+
+			elif sinal[-1] == -1:
+				if b == 0:
+					y = [-1.0] * taxa_amostragem * 2
+
+				else:
+					y = [0] * taxa_amostragem * 2
+
+			sinal += list(y)
+
+		elif sequencia[b] == '0':
+			if sinal[-1] == -1:
+				
+				y = [1.0] * taxa_amostragem * 2
+
+			elif sinal[-1] == 0:
+
+				if b == 0:
+					y = [1.0] * taxa_amostragem * 2
+
+				elif sequencia[b-1] == '0':
+
+					y = [0] * taxa_amostragem * 2
+
+				elif sequencia[b-1] == '1':
+
+					y = [1] * taxa_amostragem * 2
+
+			elif sinal[-1] == 1:
+				if b == 0:
+					y = [1.0] * taxa_amostragem * 2
+
+				else:
+					y = [0] * taxa_amostragem * 2
+
+			sinal += list(y)
+
+	y = sinal
+	x = np.linspace(0.0, len(sequencia), len(y))
+
+	desenha_grafico(x, y, sequencia, "dicode nrz")
+
 
 
 def menu(janela_principal):
@@ -392,6 +458,10 @@ def menu(janela_principal):
 	y+=30
 	botao_delay_modulation = Button(janela_principal, width=16, font=None, text="Delay Modulation")
 	botao_delay_modulation.place(x=10, y=y)
+
+	y+=30
+	botao_delay_dicode_nrz = Button(janela_principal, width=16, font=None, text="Dicode NRZ")
+	botao_delay_dicode_nrz.place(x=10, y=y)
 	
 
 	botao_nrz_l["command"] = partial(nrz_l, janela_principal, caixa_de_texto)
@@ -404,6 +474,7 @@ def menu(janela_principal):
 	botao_bi_phase_m["command"] = partial(bi_phase_m, janela_principal, caixa_de_texto)
 	botao_bi_phase_s["command"] = partial(bi_phase_s, janela_principal, caixa_de_texto)
 	botao_delay_modulation["command"] = partial(delay_modulation, janela_principal, caixa_de_texto)
+	botao_delay_dicode_nrz["command"] = partial(dicode_nrz, janela_principal, caixa_de_texto)
 
 	
 menu(janela_principal)
