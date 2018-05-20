@@ -46,6 +46,8 @@ def nrz_l(janela_principal, caixa_de_texto):
 		if sequencia[b] == '1': y = [1.0] * taxa_amostragem * 2
 		elif sequencia[b] == '0': y = [-1.0] * taxa_amostragem * 2
 
+		else: return
+
 		sinal += list(y)
 
 	y = sinal
@@ -74,6 +76,8 @@ def nrz_m(janela_principal, caixa_de_texto):
 
 			sinal += list(y)
 
+		else: return
+
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
@@ -100,6 +104,8 @@ def nrz_s(janela_principal, caixa_de_texto):
 
 			sinal += list(y)
 
+		else: return
+
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
@@ -124,6 +130,8 @@ def unipolar_rz(janela_principal, caixa_de_texto):
 			y = [0] * taxa_amostragem * 2
 
 			sinal += list(y)
+
+		else: return
 
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
@@ -150,6 +158,8 @@ def bipolar_rz(janela_principal, caixa_de_texto):
 			y = list(y1) + list(y2)
 
 			sinal += list(y)
+
+		else: return
 
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
@@ -183,6 +193,8 @@ def rz_ami(janela_principal, caixa_de_texto):
 
 			sinal += list(y)
 
+		else: return
+
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
@@ -212,6 +224,8 @@ def bi_phase_l(janela_principal, caixa_de_texto):
 			y = list(y1) + list(y2)
 
 			sinal += list(y)
+
+		else: return
 
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
@@ -246,6 +260,8 @@ def bi_phase_m(janela_principal, caixa_de_texto):
 
 			sinal += list(y)
 
+		else: return
+
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
@@ -278,6 +294,8 @@ def bi_phase_s(janela_principal, caixa_de_texto):
 			else: y = [1] * taxa_amostragem * 2
 
 			sinal += list(y)
+
+		else: return
 
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
@@ -331,6 +349,8 @@ def delay_modulation(janela_principal, caixa_de_texto):
 				y = [-1.0] * taxa_amostragem * 2
 
 				sinal += list(y)
+
+		else: return
 
 	qt_amostras = taxa_amostragem * 1600 / 50
 
@@ -399,6 +419,8 @@ def dicode_nrz(janela_principal, caixa_de_texto):
 					y = [0] * taxa_amostragem * 2
 
 			sinal += list(y)
+
+		else: return
 
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
@@ -489,6 +511,8 @@ def dicode_rz(janela_principal, caixa_de_texto):
 					y = [0] * taxa_amostragem * 2
 
 			sinal += list(y)
+
+		else: return
 
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
