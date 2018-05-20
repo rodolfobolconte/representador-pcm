@@ -572,5 +572,5 @@ def menu(janela_principal):
 	
 menu(janela_principal)
 
-janela_principal.geometry("{0}x{1}+0+0".format(janela_principal.winfo_screenwidth(), janela_principal.winfo_screenheight()))
+janela_principal.geometry("{0}x{0}+-8+-1".format(janela_principal.winfo_screenwidth(), janela_principal.winfo_screenheight()))
 janela_principal.mainloop()
