@@ -357,7 +357,7 @@ def delay_modulation(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "delay modulation", "#cc8800")
+	desenha_grafico(x, y, sequencia, "delay modulation", "#blue")
 
 def dicode_nrz(janela_principal, caixa_de_texto):
 
@@ -568,7 +568,7 @@ def menu(janela_principal):
 	botao_bi_phase_s.place(x=10, y=y)
 
 	y+=30
-	botao_delay_modulation = Button(janela_principal, width=16, font=None, text="Delay Modulation", bg='#ff9955')
+	botao_delay_modulation = Button(janela_principal, width=16, font=None, text="Delay Modulation", bg='#5577ff')
 	botao_delay_modulation.place(x=10, y=y)
 
 	y+=30
