@@ -425,7 +425,7 @@ def dicode_nrz(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "dicode nrz", "purple")
+	desenha_grafico(x, y, sequencia, "dicode nrz", "#cc8800")
 
 def dicode_rz(janela_principal, caixa_de_texto):
 
@@ -517,7 +517,7 @@ def dicode_rz(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "dicode rz", "purple")
+	desenha_grafico(x, y, sequencia, "dicode rz", "#cc8800")
 
 def menu(janela_principal):
 	
@@ -572,11 +572,11 @@ def menu(janela_principal):
 	botao_delay_modulation.place(x=10, y=y)
 
 	y+=30
-	botao_delay_dicode_nrz = Button(janela_principal, width=16, font=None, text="Dicode NRZ", bg='#ad7dad')
+	botao_delay_dicode_nrz = Button(janela_principal, width=16, font=None, text="Dicode NRZ", bg='#ff9955')
 	botao_delay_dicode_nrz.place(x=10, y=y)
 
 	y+=30
-	botao_delay_dicode_rz = Button(janela_principal, width=16, font=None, text="Dicode RZ", bg='#ad7dad')
+	botao_delay_dicode_rz = Button(janela_principal, width=16, font=None, text="Dicode RZ", bg='#ff9955')
 	botao_delay_dicode_rz.place(x=10, y=y)
 	
 
