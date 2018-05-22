@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 janela_principal = Tk()
-janela_principal.title("Representador de Forma PCM (Pulse Code Modulation)")
+janela_principal.title("Representador de Forma de Onda PCM (Pulse Code Modulation)")
 janela_principal.configure(background='white')
 
 fig, eixo = plt.subplots(nrows=1, ncols=1, figsize=(80, 7))
