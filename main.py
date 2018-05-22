@@ -33,7 +33,7 @@ def desenha_grafico(x, y, sequencia, tipo_pcm, cor):
 
 	menu(janela_principal)
 
-taxa_amostragem = 20
+taxa_amostragem = 10
 
 def nrz_l(janela_principal, caixa_de_texto):
 
