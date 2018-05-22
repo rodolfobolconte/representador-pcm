@@ -357,7 +357,7 @@ def delay_modulation(janela_principal, caixa_de_texto):
 	y = sinal
 	x = np.linspace(0.0, len(sequencia), len(y))
 
-	desenha_grafico(x, y, sequencia, "delay modulation", "#blue")
+	desenha_grafico(x, y, sequencia, "delay modulation", "blue")
 
 def dicode_nrz(janela_principal, caixa_de_texto):
 
