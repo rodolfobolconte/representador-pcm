@@ -28,12 +28,12 @@ def desenha_grafico(x, y, sequencia, tipo_pcm, cor):
 	eixo.grid(True)
 
 	canvas = FigureCanvasTkAgg(fig, master=janela_principal)
-	canvas.show()
+	canvas.draw()
 	canvas.get_tk_widget().pack(fill=BOTH, expand=1, padx=150, pady=30)
 
 	menu(janela_principal)
 
-taxa_amostragem = 10
+taxa_amostragem = 20
 
 def nrz_l(janela_principal, caixa_de_texto):
 
